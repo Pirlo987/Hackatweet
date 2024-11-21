@@ -61,7 +61,7 @@ function Signup(){
                 <input className={styles.inputSignup} type='text' onChange={(e) => setSignUpName(e.target.value)} value={signUpName}></input>
                 <input className={styles.inputSignup} type='text' onChange={(e) => setSignUpUsername(e.target.value)} value={signUpUsername}></input>
                 <input className={styles.inputSignup} type='text' onChange={(e) => setSignUpPassword(e.target.value)} value={signUpPassword}></input>
-                <button onClick={()=>SignUpBtn()}>Signin</button>
+                <button onClick={()=>SignUpBtn()}>Signup</button>
             </div>
             
           </Modal>                                                                        
