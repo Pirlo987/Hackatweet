@@ -3,6 +3,7 @@ var router = express.Router();
 
 require("../models/connection");
 const Tweet = require("../models/tweet");
+const User = require("../models/users");
 
 router.post("/post", (req, res) => {
   User.findOne({ token: req.body.token }).then((data) => {
@@ -11,7 +12,7 @@ router.post("/post", (req, res) => {
       let text = req.body.tweet;
       if (text.includes("#")) {
         //méthode pour récup #
-        listHashtag = text.match(/(#\w+[^.!?]*)/g);
+        listHashtag = text.match(/(#\w+[^\s#]*)/g);
       }
 
       const newTweet = new Tweet({
@@ -33,6 +34,14 @@ router.get("/wall", (req, res) => {
   });
 });
 
-/*router.get("/hashtag")*/
+router.get("/hashtag", (req, res) => {
+  Tweet.find({}, "hashtag").then((tweets) => {
+    let allHashtags = [];
+    tweets.forEach((Tweet) => {
+      allHashtags = allHashtags.concat(Tweet.hashtag);
+    });
+    res.json({ succees: true, hashtag: allHashtags });
+  });
+});
 
 module.exports = router;
