@@ -27,10 +27,10 @@ function Signup(){
                 <input className={styles.inputSignup} type='text'></input>
                 <input className={styles.inputSignup} type='text'></input>
                 <input className={styles.inputSignup} type='text'></input>
-                <button>Signin</button>
+                <button>Signup</button>
             </div>
             
-          </Modal>
+          </Modal>                                                                        
         </>
       );
     }

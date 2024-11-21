@@ -1,4 +1,6 @@
 import styles from '../styles/Home.module.css';
+import Link from 'next/link';
+
 
 function Home() {
   return (
@@ -23,6 +25,7 @@ function Home() {
             <p id={styles.p}>Already Have an acoount ?</p>
 
             <button id={styles.btnSignIn}>Sign in</button>
+            <Link href="/twitter">Go to twitter page</Link>
         </div>
 
     </div>
