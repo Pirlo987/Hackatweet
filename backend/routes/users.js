@@ -48,12 +48,14 @@ router.post("/signin", (req, res) => {
   });
 });
 
-/*router.post("/like/:token", (req, res) => {
+router.post("/like/:token", (req, res) => {
   User.findOne({ token: req.params.token }).then((data) => {
     if (data) {
-      res.json({ result: true });
+      res.json({ result: true, like: data.like });
+    } else {
+      res.json({ result: false, error: "User not found" });
     }
   });
-});*/
+});
 
 module.exports = router;

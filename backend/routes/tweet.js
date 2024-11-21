@@ -2,9 +2,37 @@ var express = require("express");
 var router = express.Router();
 
 require("../models/connection");
-const tweet = require("../models/tweet");
-const { checkBody } = require("../modules/checkBody");
+const Tweet = require("../models/tweet");
 
-router.post("/");
+router.post("/post", (req, res) => {
+  User.findOne({ token: req.body.token }).then((data) => {
+    if (data) {
+      let listHashtag = [];
+      let text = req.body.tweet;
+      if (text.includes("#")) {
+        //méthode pour récup #
+        listHashtag = text.match(/(#\w+[^.!?]*)/g);
+      }
+
+      const newTweet = new Tweet({
+        user: data._id,
+        tweet: req.body.tweet,
+        hashtag: listHashtag,
+        like: [],
+      });
+      newTweet.save().then((newtwee) => {
+        res.json({ result: true });
+      });
+    }
+  });
+});
+
+router.get("/wall", (req, res) => {
+  Tweet.find().then((data) => {
+    res.json({ tweet: data });
+  });
+});
+
+/*router.get("/hashtag")*/
 
 module.exports = router;
