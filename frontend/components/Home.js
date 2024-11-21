@@ -18,7 +18,7 @@ function Home() {
 
             <h2 id={styles.h2}>Join Hackatweet today.</h2>
 
-            <button id={styles.btnSignUp}>Sign up</button>
+            <Signup/>
             
             <p id={styles.p}>Already Have an acoount ?</p>
 
