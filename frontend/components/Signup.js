@@ -58,17 +58,10 @@ function Signup(){
           <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
           <div className={styles.signupContainer}>
                 <h1>Create your Hackatweet account</h1>
-<<<<<<< HEAD
-                <input className={styles.inputSignup} type='text'></input>
-                <input className={styles.inputSignup} type='text'></input>
-                <input className={styles.inputSignup} type='text'></input>
-                <button>Signup</button>
-=======
                 <input className={styles.inputSignup} type='text' onChange={(e) => setSignUpName(e.target.value)} value={signUpName}></input>
                 <input className={styles.inputSignup} type='text' onChange={(e) => setSignUpUsername(e.target.value)} value={signUpUsername}></input>
                 <input className={styles.inputSignup} type='text' onChange={(e) => setSignUpPassword(e.target.value)} value={signUpPassword}></input>
                 <button onClick={()=>SignUpBtn()}>Signin</button>
->>>>>>> 1eecf780575db93636086c9ea487ca9f1234996b
             </div>
             
           </Modal>                                                                        
