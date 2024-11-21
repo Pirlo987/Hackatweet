@@ -3,10 +3,12 @@ import styles from '../styles/Signin.module.css';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '../reducers/user';
+import { useRouter } from 'next/router'
 
 function Signin(){
 
       const dispatch = useDispatch();
+      const router = useRouter()
       const user = useSelector((state) => state.user.value);
 
 
@@ -39,6 +41,7 @@ function Signin(){
               dispatch(login({ username: signInUsername, token: data.token, name: data.name }))
               setSignInUsername('');
 					    setSignInPassword('');
+              router.push("/twitter")
             }
           });
 
@@ -57,8 +60,8 @@ console.log(user)
             <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
             <div className={styles.signinContainer}>
                 <h1>Connect to Hackatweet</h1>
-                <input type='text' onChange={(e) => setSignInUsername(e.target.value)} value={signInUsername}></input>
-                <input type='text' onChange={(e) => setSignInPassword(e.target.value)} value={signInPassword}></input>
+                <input type='text' onChange={(e) => setSignInUsername(e.target.value)} value={signInUsername} placeholder='Username'></input>
+                <input type='text' onChange={(e) => setSignInPassword(e.target.value)} value={signInPassword} placeholder='Password'></input>
                 <button onClick={()=> SignInBtn()}>Signin</button>
             </div>
             </Modal>

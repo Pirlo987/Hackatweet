@@ -3,11 +3,15 @@ import styles from '../styles/Signup.module.css';
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '../reducers/user';
+import { useRouter } from 'next/router'
+
 
 
 function Signup(){
-  
       
+      
+      
+      const router = useRouter()
       const dispatch = useDispatch();
       const user = useSelector((state) => state.user.value);
 
@@ -43,6 +47,7 @@ function Signup(){
               setSignUpName('');
               setSignUpUsername('');
 					    setSignUpPassword('')
+              router.push("/twitter")
               console.log(data)
             }
           });
@@ -58,9 +63,9 @@ function Signup(){
           <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
           <div className={styles.signupContainer}>
                 <h1>Create your Hackatweet account</h1>
-                <input className={styles.inputSignup} type='text' onChange={(e) => setSignUpName(e.target.value)} value={signUpName}></input>
-                <input className={styles.inputSignup} type='text' onChange={(e) => setSignUpUsername(e.target.value)} value={signUpUsername}></input>
-                <input className={styles.inputSignup} type='text' onChange={(e) => setSignUpPassword(e.target.value)} value={signUpPassword}></input>
+                <input className={styles.inputSignup} type='text' onChange={(e) => setSignUpName(e.target.value)} value={signUpName} placeholder='Name'></input>
+                <input className={styles.inputSignup} type='text' onChange={(e) => setSignUpUsername(e.target.value)} value={signUpUsername} placeholder='Username'></input>
+                <input className={styles.inputSignup} type='text' onChange={(e) => setSignUpPassword(e.target.value)} value={signUpPassword} placeholder='Password'></input>
                 <button onClick={()=>SignUpBtn()}>Signin</button>
             </div>
             
