@@ -1,5 +1,6 @@
 import styles from '../styles/Twitter.module.css';
 import Tweet from './Tweet';
+import Trends from './Trends';
 
 function Twitter(){
 
@@ -19,12 +20,13 @@ return(
                 </div>
             </div>
             <div className={styles.postContainer}>
-            <Tweet></Tweet>
+            <Tweet/>
             </div>
         </div>
         <div className={styles.rightContainer}>
             <h1 className={styles.trendsTitle}>Trends</h1>
             <div className={styles.trendsContainer}>
+                <Trends/>
                 <div className={styles.trendsContent}></div>
             </div>
         </div>
