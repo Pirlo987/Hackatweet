@@ -2,7 +2,7 @@ import styles from '../styles/Tweet.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
-
+import bluetweet from '../modules/bluetweet'
 
 
 function Tweet(props){
@@ -54,7 +54,7 @@ return(
             <span className={styles.grey}>{props.date}</span> 
         </div>
        <div className={styles.tweet}>
-            <p>{props.tweet}</p>
+            <p>{newBlueTweet}</p>
        </div>
        <div className={styles.like}>
        <span><FontAwesomeIcon icon={faHeart} onClick={() => handleLikeTweet()} style={heartIconStyle} className="like" /></span>
