@@ -1,4 +1,5 @@
 import styles from '../styles/Twitter.module.css';
+import LastTweets from './LastTweets';
 import Tweet from './Tweet';
 
 function Twitter(){
@@ -19,7 +20,7 @@ return(
                 </div>
             </div>
             <div className={styles.postContainer}>
-            <Tweet></Tweet>
+            <LastTweets/>
             </div>
         </div>
         <div className={styles.rightContainer}>

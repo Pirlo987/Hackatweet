@@ -29,7 +29,9 @@ router.post("/post", (req, res) => {
 });
 
 router.get("/wall", (req, res) => {
-  Tweet.find().then((data) => {
+  Tweet.find()
+  .populate('user')
+  .then((data) => {
     res.json({ tweet: data });
   });
 });

@@ -4,7 +4,7 @@ const tweetSchema = mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
   tweet: String,
   hashtag: [String],
-  creationDate: { type: Date, default: Date.now },
+  creationDate: { type: Date, default: Date.now() },
   like: [{ type: mongoose.Schema.Types.ObjectId, ref: "users" }],
 });
 
