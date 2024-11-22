@@ -31,11 +31,11 @@ router.post("/post", (req, res) => {
 
 router.get("/wall", (req, res) => {
   Tweet.find()
-    .populate("user")
-    .populate("like")
-    .then((data) => {
-      res.json({ tweet: data });
-    });
+  .populate('user')
+  .populate('like')
+  .then((data) => {
+    res.json({ tweet: data });
+  });
 });
 
 router.get("/hashtag", (req, res) => {
@@ -74,4 +74,6 @@ router.post("/dislike", (req, res) => {
   });
 });
 
+=======
+>>>>>>> c2a6f94a825301cfed849fbd51541a6c5bc25713
 module.exports = router;
