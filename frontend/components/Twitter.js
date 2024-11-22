@@ -13,6 +13,7 @@ function Twitter() {
   const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
   const router = useRouter();
+  const maxLength = 280;
 
   const sendingPost = () => {
     fetch("http://localhost:3000/tweet/post", {
@@ -26,6 +27,13 @@ function Twitter() {
           setRerender(!rerender);
         }
       });
+  };
+
+  const handleChange = (event) => {
+    const newTextTweet = event.target.value;
+    if (newTextTweet.length <= maxLength) {
+      setTextTweet(newTextTweet);
+    }
   };
 
   const handleLogout = () => {
@@ -61,21 +69,25 @@ function Twitter() {
             className={styles.tweetInput}
             value={textTweet}
             placeholder="What's up ?"
+            maxLength={280}
           ></input>
           <div className={styles.btnContainer}>
+            <div className={styles.counter}>
+              {textTweet.length}/{maxLength}
+            </div>
             <button onClick={() => sendingPost()} className={styles.tweetBtn}>
               Tweet
             </button>
           </div>
         </div>
         <div className={styles.postContainer}>
-          <LastTweets/>
+          <LastTweets />
         </div>
       </div>
       <div className={styles.rightContainer}>
         <h1 className={styles.trendsTitle}>Trends</h1>
         <div className={styles.trendsContainer}>
-            <Trends/>
+          <Trends />
           <div className={styles.trendsContent}></div>
         </div>
       </div>

@@ -19,6 +19,7 @@ router.post("/post", (req, res) => {
         user: data._id,
         tweet: req.body.tweet,
         hashtag: listHashtag,
+        creationDate: Date.now(),
         like: [],
       });
       newTweet.save().then((newtwee) => {
@@ -30,13 +31,11 @@ router.post("/post", (req, res) => {
 
 router.get("/wall", (req, res) => {
   Tweet.find()
-  .populate('user')
-  .then((data) => {
-    res.json({ tweet: data });
-  });
+    .populate("user")
+    .then((data) => {
+      res.json({ tweet: data });
+    });
 });
-
-
 
 router.get("/hashtag", (req, res) => {
   Tweet.find({}, "hashtag").then((tweets) => {
@@ -47,7 +46,5 @@ router.get("/hashtag", (req, res) => {
     res.json({ succees: true, hashtag: allHashtags });
   });
 });
-
-
 
 module.exports = router;

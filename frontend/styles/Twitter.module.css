@@ -92,6 +92,13 @@
   font-weight: 600;
 }
 
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 15%;
+}
+
 .rightContainer {
   display: flex;
   flex-direction: column;
@@ -126,5 +133,4 @@
 
 .postContainer::-webkit-scrollbar {
   width: 0px;
- 
 }
