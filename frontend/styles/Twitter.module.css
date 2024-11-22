@@ -112,6 +112,10 @@
   height: 30%;
   background-color: #1b232c;
   border-radius: 20px;
+  overflow-y: scroll;
+}
+.trendsContainer::-webkit-scrollbar {
+  width: 0px;
 }
 
 .trendsTitle {
