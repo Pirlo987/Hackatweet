@@ -42,6 +42,7 @@ function Tweet(props){
     heartIconStyle = { 'color': '#e74c3c', 'cursor': 'pointer' };
   }
 
+  const newBlueTweet = bluetweet(props.tweet);
 
 
 return(
@@ -56,7 +57,7 @@ return(
             <p>{props.tweet}</p>
        </div>
        <div className={styles.like}>
-       <span><FontAwesomeIcon icon={faHeart} onClick={() => { !props.isLiked ? handleLikeTweet() : handleDislikeTweet()}} style={heartIconStyle} className="like" /></span>
+       <span><FontAwesomeIcon icon={faHeart} onClick={() => handleLikeTweet()} style={heartIconStyle} className="like" /></span>
        <span>{props.counter}</span> 
        </div>
    </div> 

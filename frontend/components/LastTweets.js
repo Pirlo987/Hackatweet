@@ -50,16 +50,10 @@ const user = useSelector((state) => state.user.value);
           return <Tweet key={i} name={data.user.name} username={data.user.username} tweet={data.tweet} date={timeAgo} counter={data.like.length} id={data._id} isLiked={isLiked} refreshLastTweet={refreshLastTweet}/>;
       });
 
-      return (
-        <>
-         {allTweets}
-        </>
-      );
-    }
 
+   
 
-  export default LastTweets;
+  return <>{allTweets}</>;
+}
 
-
-
-
+export default LastTweets;
