@@ -21,17 +21,23 @@ function Trends(){
     }, []);
 
 
+    const trending = hashtags.map((data, i) => {
+        return (
+            <div key={i} className={styles.hashtagItem}>
+                <p className={styles.hashtag}>{data}</p>
+                <span className={styles.span}> </span>
+            </div>
+          )})
+    ;
+    
 
 
 return(
      <div className={styles.hashtagContainer}>
-            {hashtags.map((hashtag, index) => (
-                <div key={index} className={styles.hashtagItem}>
-                    <p className={styles.hashtag}>{hashtag}</p>
-                    <span className={styles.span}>1 Tweets</span>
-                </div>
-            ))}
-        </div>
+        
+        {trending}
+            
+     </div>
 )
 }
 

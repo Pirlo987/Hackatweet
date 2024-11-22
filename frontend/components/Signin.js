@@ -36,12 +36,15 @@ function Signin(){
           body: JSON.stringify({ username: signInUsername, password: signInPassword }),
         }).then(response => response.json())
           .then(data => {
-            if (data) {
+            if (data.result) {
               console.log(data)
               dispatch(login({ username: signInUsername, token: data.token, name: data.name }))
               setSignInUsername('');
 					    setSignInPassword('');
               router.push("/twitter")
+            }else {
+              setSignInUsername('');
+					    setSignInPassword('');
             }
           });
 

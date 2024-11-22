@@ -34,6 +34,8 @@ router.get("/wall", (req, res) => {
   });
 });
 
+
+
 router.get("/hashtag", (req, res) => {
   Tweet.find({}, "hashtag").then((tweets) => {
     let allHashtags = [];
@@ -43,5 +45,7 @@ router.get("/hashtag", (req, res) => {
     res.json({ succees: true, hashtag: allHashtags });
   });
 });
+
+
 
 module.exports = router;
