@@ -24,13 +24,13 @@ const [tweets, setTweets] = useState([])
     
         // Formater en chaîne lisible
         if (days > 0) {
-            return `${days} jour${days > 1 ? 's' : ''} ago`; // Si plus d'un jour
+            return `${days} day${days > 1 ? 's' : ''} ago`; // Si plus d'un jour
         } else if (hours > 0) {
-            return `${hours} heure${hours > 1 ? 's' : ''} ago`; // Si plus d'une heure
+            return `${hours} hour${hours > 1 ? 's' : ''} ago`; // Si plus d'une heure
         } else if (minutes > 0) {
             return `${minutes} minute${minutes > 1 ? 's' : ''} ago`; // Si plus d'une minute
         } else {
-            return `${seconds} seconde${seconds > 1 ? 's' : ''} ago`; // Moins d'une minute
+            return `${seconds} second${seconds > 1 ? 's' : ''} ago`; // Moins d'une minute
         }
     };
 
