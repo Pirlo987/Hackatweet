@@ -90,4 +90,65 @@ function Signup() {
   );
 }
 
+<<<<<<< HEAD
 export default Signup;
+=======
+
+
+
+      const showModal = () => {
+        setIsModalOpen(true);
+      };
+      const handleOk = () => {
+        setIsModalOpen(false);
+      };
+      const handleCancel = () => {
+        setIsModalOpen(false);
+      };
+
+
+      const SignUpBtn = () => {
+        fetch('http://localhost:3000/users/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({name:signUpName, username: signUpUsername, password: signUpPassword }),
+        }).then(response => response.json())
+          .then(data => {
+            if (data) {
+              dispatch(login({ username: signUpUsername, token: data.token , name: signUpName}));
+              setSignUpName('');
+              setSignUpUsername('');
+					    setSignUpPassword('')
+              router.push("/twitter")
+              console.log(data)
+            }
+          });
+      };
+
+
+
+      return (
+        <>
+          <Button type="primary" onClick={showModal}>
+            Signup
+          </Button>
+          <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+          <div className={styles.signupContainer}>
+                <h1>Create your Hackatweet account</h1>
+                <input className={styles.inputSignup} type='text' onChange={(e) => setSignUpName(e.target.value)} value={signUpName} placeholder='Name'></input>
+                <input className={styles.inputSignup} type='text' onChange={(e) => setSignUpUsername(e.target.value)} value={signUpUsername} placeholder='Username'></input>
+                <input className={styles.inputSignup} type='text' onChange={(e) => setSignUpPassword(e.target.value)} value={signUpPassword} placeholder='Password'></input>
+                <button onClick={()=>SignUpBtn()}>Signin</button>
+            </div>
+            
+          </Modal>                                                                        
+        </>
+      );
+    }
+
+
+
+
+
+export default Signup
+>>>>>>> bc5b9abdb72522230b8b0bf67d66dba263f3de95
