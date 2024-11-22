@@ -16,10 +16,9 @@
 }
 
 .rightContainer {
-  background-color: #151F2B;
+  background-color: #151f2b;
   padding: 30px;
 }
-
 
 #iconeTwitter {
   height: 50px;
@@ -31,7 +30,6 @@
   font-weight: 900;
 }
 
-
 #h2 {
   color: white;
   font-weight: 800;
@@ -39,17 +37,15 @@
 }
 
 #btnSignUp {
-  padding: 15px 30px; 
+  padding: 15px 30px;
   border-radius: 20px;
 }
-
 
 #p {
   color: white;
 }
 
-
 #btnSignIn {
-  padding: 15px 30px; 
+  padding: 15px 30px;
   border-radius: 20px;
 }
