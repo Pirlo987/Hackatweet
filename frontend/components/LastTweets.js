@@ -23,6 +23,28 @@ function LastTweets() {
 
     // Formater en chaîne lisible
     if (days > 0) {
+      return `${days} day${days > 1 ? "s" : ""} ago`; // Si plus d'un jour
+    } else if (hours > 0) {
+      return `${hours} hour${hours > 1 ? "s" : ""} ago`; // Si plus d'une heure
+    } else if (minutes > 0) {
+      return `${minutes} minute${minutes > 1 ? "s" : ""} ago`; // Si plus d'une minute
+    } else {
+      return `${seconds} second${seconds > 1 ? "s" : ""} ago`; // Moins d'une minute
+    }
+  };
+
+  const afficherTempsEcoule = (dateCreation) => {
+    let datePost = new Date(dateCreation).getTime(); // Calculer la différence en millisecondes
+    let diffMs = Date.now() - datePost;
+
+    // Convertir cette différence en secondes, minutes, heures, jours
+    let seconds = Math.floor(diffMs / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let hours = Math.floor(minutes / 60);
+    let days = Math.floor(hours / 24);
+
+    // Formater en chaîne lisible
+    if (days > 0) {
       return `${days} jour${days > 1 ? "s" : ""} ago`; // Si plus d'un jour
     } else if (hours > 0) {
       return `${hours} heure${hours > 1 ? "s" : ""} ago`; // Si plus d'une heure
