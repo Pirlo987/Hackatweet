@@ -1,16 +1,46 @@
 import styles from '../styles/Tweet.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-function Tweet(props){
+import { useSelector } from 'react-redux';
 
+
+
+function Tweet(props){
+  const user = useSelector((state) => state.user.value);
  // Like tweet
  const handleLikeTweet = () => {
-   // route like
+   fetch('http://localhost:3000/tweet/like',{
+   method: "POST",
+   headers: { "Content-Type": "application/json" },
+   body: JSON.stringify({token: user.token, id : props.id }),
+ })
+   .then((response) => response.json())
+   .then((data) => {
+     if (data.result) {
+      props.refreshLastTweet()
+     
+   }});
+
   };
+//Dislike tweet
+  const handleDislikeTweet = () => {
+    fetch('http://localhost:3000/tweet/dislike',{
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({token: user.token, id : props.id }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.result) {
+       props.refreshLastTweet()
+      
+    }});
+ 
+   };
   let heartIconStyle = { 'cursor': 'pointer' };
- /* if () {
+  if (props.isLiked) {
     heartIconStyle = { 'color': '#e74c3c', 'cursor': 'pointer' };
-  }*/
+  }
 
 
 
@@ -26,7 +56,7 @@ return(
             <p>{props.tweet}</p>
        </div>
        <div className={styles.like}>
-       <span><FontAwesomeIcon icon={faHeart} onClick={() => handleLikeTweet()} style={heartIconStyle} className="like" /></span>
+       <span><FontAwesomeIcon icon={faHeart} onClick={() => { !props.isLiked ? handleLikeTweet() : handleDislikeTweet()}} style={heartIconStyle} className="like" /></span>
        <span>{props.counter}</span> 
        </div>
    </div> 

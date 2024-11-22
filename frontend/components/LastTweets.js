@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import Tweet from '../components/Tweet'
+import { useSelector } from 'react-redux';
 
 function LastTweets(){
 const [tweets, setTweets] = useState([])
+const [refresh, setRefresh] = useState(false)
+const user = useSelector((state) => state.user.value);
 
     useEffect(() => {
         fetch('http://localhost:3000/tweet/wall')
         .then(res =>res.json())
         .then(data => setTweets(data.tweet))
-      }, []);
+      }, [refresh]);
      
       
       const afficherTempsEcoule = (dateCreation) => {
@@ -34,10 +37,17 @@ const [tweets, setTweets] = useState([])
         }
     };
 
+    function refreshLastTweet(){
+      setRefresh(!refresh)
+    }
+
       const allTweets = tweets.map((data, i) => {
         let timeAgo = afficherTempsEcoule(data.creationDate);
-
-          return <Tweet key={i} name={data.user.name} username={data.user.username} tweet={data.tweet} date={timeAgo} counter={data.like.length}/>;
+        let isLiked = false
+        if(data.like.some(e => e.token === user.token)){
+          isLiked = true
+        }
+          return <Tweet key={i} name={data.user.name} username={data.user.username} tweet={data.tweet} date={timeAgo} counter={data.like.length} id={data._id} isLiked={isLiked} refreshLastTweet={refreshLastTweet}/>;
       });
 
       return (
