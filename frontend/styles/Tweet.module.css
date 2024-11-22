@@ -1,11 +1,11 @@
 .postContainer{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     width: 100%;
     color: white;
     padding: 10px;
     border-bottom: 1px solid #51565B;
+    
 }
 
 .user{
@@ -16,3 +16,17 @@
     gap: 10px;
 }
 
+.user{
+ display: flex;
+ align-items: center;
+}
+
+.avatar{
+    width: 8%;
+    border-radius: 50%;
+}
+
+.grey{
+    color: grey;
+    font-size: 14px;
+}

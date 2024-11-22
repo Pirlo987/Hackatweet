@@ -1,5 +1,6 @@
 import styles from "../styles/Twitter.module.css";
 import Tweet from "./Tweet";
+import LastTweets from "./LastTweets";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -52,7 +53,7 @@ function Twitter() {
           </div>
         </div>
         <div className={styles.postContainer}>
-          <Tweet></Tweet>
+          <LastTweets/>
         </div>
       </div>
       <div className={styles.rightContainer}>

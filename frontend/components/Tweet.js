@@ -17,10 +17,10 @@ function Tweet(props){
 return(
    <div className={styles.postContainer}>
         <div className={styles.user}>
-            
+          <img className={styles.avatar} src='avatar.png'/>
             <p>{props.name}</p>
-            <p>{props.username}</p>
-            <span>{props.date}</span> 
+            <p className={styles.grey}>@{props.username} </p>
+            <span className={styles.grey}>{props.date}</span> 
         </div>
        <div className={styles.tweet}>
             <p>{props.tweet}</p>

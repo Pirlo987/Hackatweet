@@ -13,9 +13,9 @@ const [tweets, setTweets] = useState([])
      
       
       const afficherTempsEcoule = (dateCreation) => {
-        let datePost = dateCreation.getTime() // Calculer la différence en millisecondes
+        let datePost = new Date(dateCreation).getTime() // Calculer la différence en millisecondes
         let diffMs = Date.now() - datePost;
-    
+   
         // Convertir cette différence en secondes, minutes, heures, jours
         let seconds = Math.floor(diffMs / 1000);
         let minutes = Math.floor(seconds / 60);
