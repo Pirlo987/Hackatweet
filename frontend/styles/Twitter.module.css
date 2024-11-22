@@ -20,6 +20,17 @@
   height: 5%;
 }
 
+.profil {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 20%;
+  border-radius: 20px;
+}
+
 .username {
   color: grey;
   font-size: 12px;
