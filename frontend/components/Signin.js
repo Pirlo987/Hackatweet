@@ -52,7 +52,7 @@ function Signin() {
 
   console.log(user);
   if (user.token) {
-    router.push("/twitter");
+  router.push("/twitter");
   }
 
   return (

@@ -7,25 +7,41 @@ import React, { useState, useEffect } from 'react';
 function Trends(){
 
     const [hashtags, setHashtags] =useState([])
-    const getAllHastag = () => {
+    const [hashtagsCount, setHashtagsCount] = useState({});
+
+
+
+
+    const getAllHashtag = () => {
         fetch('http://localhost:3000/tweet/hashtag')
-        .then(response => response.json())
-        .then(data => {
-        setHashtags(data.hashtag)
-        });
-      };
+            .then(response => response.json())
+            .then(data => {
+                const hashtagsList = data.hashtag;
+
+              
+                const count = hashtagsList.reduce((acc, hashtag) => {
+
+                    acc[hashtag] = acc[hashtag] ? acc[hashtag] + 1 : 1;
+                    return acc;
+                }, {});
+
+                setHashtags(hashtagsList); 
+                setHashtagsCount(count);   
+            })
+
+        }
 
 
       useEffect(() => {
-        getAllHastag();
+        getAllHashtag();
     }, []);
 
 
-    const trending = hashtags.map((data, i) => {
+    const trending = Object.keys(hashtagsCount).map((hashtag, i) => {
         return (
             <div key={i} className={styles.hashtagItem}>
-                <p className={styles.hashtag}>{data}</p>
-                <span className={styles.span}> </span>
+                <p className={styles.hashtag}>{hashtag}</p>
+                <span className={styles.span}>{hashtagsCount[hashtag]} tweets </span>
             </div>
           )})
     ;
