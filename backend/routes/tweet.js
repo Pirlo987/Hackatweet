@@ -31,18 +31,11 @@ router.post("/post", (req, res) => {
 
 router.get("/wall", (req, res) => {
   Tweet.find()
-<<<<<<< HEAD
-  .populate('user')
-  .populate('like')
-  .then((data) => {
-    res.json({ tweet: data });
-  });
-=======
     .populate("user")
+    .populate("like")
     .then((data) => {
       res.json({ tweet: data });
     });
->>>>>>> c2a6f94a825301cfed849fbd51541a6c5bc25713
 });
 
 router.get("/hashtag", (req, res) => {
@@ -55,13 +48,13 @@ router.get("/hashtag", (req, res) => {
   });
 });
 
-<<<<<<< HEAD
 router.post("/like", (req, res) => {
-  //on va chercher l'utilisateur grace au token qu'on reçoit de la requete. 
+  //on va chercher l'utilisateur grace au token qu'on reçoit de la requete.
   User.findOne({ token: req.body.token }).then((user) => {
-    if (user) { //si on trouve l'utilisateur, on va modifier Tweet, on retrouve le tweet grace à son ID 
-  Tweet.updateOne({_id : req.body.id},{$push:{like: user._id}}) //on push dans son tableau de like l'id de l'utilisateur
-  .then(res.json({ result: true}))
+    if (user) {
+      //si on trouve l'utilisateur, on va modifier Tweet, on retrouve le tweet grace à son ID
+      Tweet.updateOne({ _id: req.body.id }, { $push: { like: user._id } }) //on push dans son tableau de like l'id de l'utilisateur
+        .then(res.json({ result: true }));
     } else {
       res.json({ result: false, error: "User not found" });
     }
@@ -69,17 +62,16 @@ router.post("/like", (req, res) => {
 });
 
 router.post("/dislike", (req, res) => {
-  //on va chercher l'utilisateur grace au token qu'on reçoit de la requete. 
+  //on va chercher l'utilisateur grace au token qu'on reçoit de la requete.
   User.findOne({ token: req.body.token }).then((user) => {
-    if (user) { //si on trouve l'utilisateur, on va modifier Tweet, on retrouve le tweet grace à son ID 
-  Tweet.updateOne({_id : req.body.id},{$pull:{like: user._id}}) //on pull (supprime) du tableau de like l'id de l'utilisateur
-  .then(res.json({ result: true}))
+    if (user) {
+      //si on trouve l'utilisateur, on va modifier Tweet, on retrouve le tweet grace à son ID
+      Tweet.updateOne({ _id: req.body.id }, { $pull: { like: user._id } }) //on pull (supprime) du tableau de like l'id de l'utilisateur
+        .then(res.json({ result: true }));
     } else {
       res.json({ result: false, error: "User not found" });
     }
   });
 });
 
-=======
->>>>>>> c2a6f94a825301cfed849fbd51541a6c5bc25713
 module.exports = router;
