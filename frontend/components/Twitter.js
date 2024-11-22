@@ -1,13 +1,18 @@
 import styles from "../styles/Twitter.module.css";
 import Tweet from "./Tweet";
 import Trends from "./Trends";
+import LastTweets from "./LastTweets";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { login, logout } from "../reducers/user";
+import { useRouter } from "next/router";
 
 function Twitter() {
   const [rerender, setRerender] = useState(false);
   const [textTweet, setTextTweet] = useState("");
   const user = useSelector((state) => state.user.value);
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   const sendingPost = () => {
     fetch("http://localhost:3000/tweet/post", {
@@ -23,16 +28,27 @@ function Twitter() {
       });
   };
 
+  const handleLogout = () => {
+    dispatch(logout());
+    router.push("/");
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.leftContainer}>
         <img className={styles.logo} src="logo_twitter.png" />
         <div>
-          <div>
-            <p>{user.name}</p>
-            <p className={styles.username}>@{user.username}</p>
+          <div className={styles.profil}>
+            <img className={styles.avatar} src="avatar.png" />
+
+            <div>
+              <p>{user.name}</p>
+              <p className={styles.username}>@{user.username}</p>
+            </div>
           </div>
-          <button className={styles.logout}>Logout</button>
+          <button onClick={() => handleLogout()} className={styles.logout}>
+            Logout
+          </button>
         </div>
       </div>
       <div className={styles.middleContainer}>
@@ -53,7 +69,7 @@ function Twitter() {
           </div>
         </div>
         <div className={styles.postContainer}>
-          <Tweet></Tweet>
+          <LastTweets/>
         </div>
       </div>
       <div className={styles.rightContainer}>
