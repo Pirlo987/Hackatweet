@@ -78,12 +78,12 @@ function Signup() {
           ></input>
           <input
             className={styles.inputSignup}
-            type="text"
+            type="password"
             onChange={(e) => setSignUpPassword(e.target.value)}
             value={signUpPassword}
             placeholder="Password"
           ></input>
-          <button onClick={() => SignUpBtn()}>Signin</button>
+          <button onClick={() => SignUpBtn()}>Signup</button>
         </div>
       </Modal>
     </>

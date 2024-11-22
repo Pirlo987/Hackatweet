@@ -71,7 +71,7 @@ function Signin() {
             placeholder="Username"
           ></input>
           <input
-            type="text"
+            type="password"
             onChange={(e) => setSignInPassword(e.target.value)}
             value={signInPassword}
             placeholder="Password"
