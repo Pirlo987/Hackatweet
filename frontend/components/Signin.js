@@ -52,7 +52,7 @@ function Signin() {
 
   console.log(user);
   if (user.token) {
-  router.push("/twitter");
+    router.push("/twitter");
   }
 
   return (
@@ -64,6 +64,7 @@ function Signin() {
         <div className={styles.signinContainer}>
           <h1>Connect to Hackatweet</h1>
           <input
+            className={styles.username}
             type="text"
             onChange={(e) => setSignInUsername(e.target.value)}
             value={signInUsername}
